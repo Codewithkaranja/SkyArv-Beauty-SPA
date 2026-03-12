@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyarv Beauty | Luxury Spa & Wellness</title>
+    <!-- Jost font & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #fff9f2;
+            --beige: #f5efe8;
+            --soft-beige: #f0e8de;
+            --white: #ffffff;
+            --gold: #c6a47e;
+            --gold-light: #dac29c;
+            --dark-gold: #a88664;
+            --text-dark: #3e3a36;
+            --text-light: #6b625a;
+            --shadow: 0 20px 35px -8px rgba(0,0,0,0.07), 0 5px 15px rgba(0,0,0,0.03);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* scroll padding for fixed header */
+        html {
+            scroll-padding-top: 90px;
+            scroll-behavior: smooth;
+        }
+
+        /* ---- navigation ---- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.03);
+            z-index: 1000;
+            padding: 0.8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(198, 164, 126, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--dark-gold);
+        }
+        .logo i {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+        .logo span {
+            font-weight: 300;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 400;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            letter-spacing: 0.3px;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--gold);
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .book-btn {
+            background: var(--gold);
+            color: white !important;
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 500;
+            box-shadow: 0 8px 18px rgba(198, 164, 126, 0.25);
+            transition: var(--transition);
+        }
+        .book-btn:hover {
+            background: var(--dark-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(198, 164, 126, 0.3);
+        }
+        .book-btn::after {
+            display: none;
+        }
+
+        /* mobile menu toggle (simple) */
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: var(--gold);
+            cursor: pointer;
+        }
+
+        /* ---- hero section ---- */
+        .hero {
+            height: 90vh;
+            min-height: 700px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: brightness(0.95);
+        }
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.2);
+        }
+        .hero p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            padding: 0.9rem 2.8rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: var(--dark-gold);
+            border-color: var(--dark-gold);
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(198, 164, 126, 0.4);
+        }
+        .btn-outline:hover {
+            background: white;
+            color: var(--text-dark);
+            border-color: white;
+        }
+
+        /* ---- sections general ---- */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 350;
+            color: var(--dark-gold);
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+        .section-sub {
+            text-align: center;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            font-size: 1.2rem;
+        }
+
+        /* ---- services cards ---- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: var(--white);
+            padding: 2.8rem 1.5rem 2rem;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(198,164,126,0.1);
+            cursor: default;
+        }
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 45px -15px rgba(198,164,126,0.3);
+            border-color: var(--gold-light);
+        }
+        .service-card i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        .service-card h3 {
+            font-size: 1.6rem;
+            font-weight: 450;
+            margin-bottom: 0.7rem;
+        }
+        .service-card p {
+            color: var(--text-light);
+        }
+
+        /* ---- about two column ---- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-img {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop') center/cover;
+        }
+        .about-text p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ---- gallery grid ---- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+        .gallery-item {
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 320px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            border-color: var(--gold);
+            box-shadow: 0 30px 40px -15px var(--gold-light);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ---- testimonials slider ---- */
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 40px;
+            padding: 2.5rem 3rem;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(198,164,126,0.2);
+            position: relative;
+        }
+        .testimonial-slide {
+            display: none;
+            text-align: center;
+            animation: fade 0.5s;
+        }
+        .testimonial-slide.active {
+            display: block;
+        }
+        .testimonial-slide p {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+        .client-name {
+            font-weight: 500;
+            color: var(--gold);
+            letter-spacing: 0.5px;
+        }
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .slider-btn {
+            background: none;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .slider-btn:hover {
+            background: var(--gold);
+            color: white;
+        }
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: var(--soft-beige);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .dot.active {
+            background: var(--gold);
+            transform: scale(1.4);
+        }
+
+        /* ---- booking form ---- */
+        .booking-form {
+            max-width: 750px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 40px;
+            box-shadow: var(--shadow);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            width: 100%;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 1px solid #e0d6cc;
+            border-radius: 50px;
+            font-family: 'Jost', sans-serif;
+            font-size: 1rem;
+            background: var(--cream);
+            transition: var(--transition);
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(198,164,126,0.15);
+        }
+        textarea {
+            border-radius: 30px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background: var(--gold);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            border-radius: 60px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+        }
+        .submit-btn:hover {
+            background: var(--dark-gold);
+            box-shadow: 0 15px 30px rgba(198,164,126,0.4);
+        }
+
+        /* ---- contact section + map ---- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .contact-info {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        .info-item i {
+            font-size: 1.8rem;
+            color: var(--gold);
+            width: 40px;
+        }
+        .info-item a {
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        .info-item a:hover {
+            color: var(--gold);
+        }
+        .map-container {
+            border-radius: 30px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: var(--shadow);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* ---- footer ---- */
+        .footer {
+            background: var(--beige);
+            padding: 4rem 2rem 2rem;
+            margin-top: 3rem;
+            border-top: 2px solid rgba(198,164,126,0.2);
+        }
+        .footer-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1.5fr;
+            gap: 3rem;
+        }
+        .footer-logo .logo {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .social-icons a {
+            color: var(--gold);
+            font-size: 1.8rem;
+            transition: var(--transition);
+        }
+        .social-icons a:hover {
+            color: var(--dark-gold);
+            transform: scale(1.1);
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-light);
+            border-top: 1px dashed rgba(198,164,126,0.3);
+            padding-top: 2rem;
+        }
+
+        /* floating whatsapp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            background: #20b859;
+            transform: scale(1.08);
+        }
+
+        /* fade-in scroll animations */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* responsiveness */
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 2rem 0;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero h1 { font-size: 3rem; }
+            .about-grid, .contact-grid, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 500px) {
+            .hero h1 { font-size: 2.3rem; }
+            .btn { padding: 0.7rem 1.8rem; }
+        }
+
+        /* helper */
+        .text-gold { color: var(--gold); }
+    </style>
+</head>
+<body>
+    <!-- floating whatsapp -->
+    <a href="https://wa.me/254713890926" class="whatsapp-float" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- sticky navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <i class="fas fa-spa"></i> Skyarv <span>Beauty</span>
+        </div>
+        <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#booking" class="book-btn">Book Appointment</a></li>
+        </ul>
+    </nav>
+
+    <!-- hero section -->
+    <section id="home" class="hero fade-section">
+        <div class="hero-overlay">
+            <h1>Luxury Wellness & Beauty Experience</h1>
+            <p>Surrender to serenity — where holistic care meets timeless elegance.</p>
+            <div class="hero-btns">
+                <a href="#booking" class="btn btn-primary">Book Appointment</a>
+                <a href="#services" class="btn btn-outline">View Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- services -->
+    <section id="services" class="section fade-section">
+        <h2 class="section-title">Indulge in our rituals</h2>
+        <div class="section-sub">Holistic treatments designed for your well-being</div>
+        <div class="services-grid">
+            <div class="service-card"><i class="fas fa-hand-sparkles"></i><h3>Facial Treatments</h3><p>Radiance renewal</p></div>
+            <div class="service-card"><i class="fas fa-hand-holding-heart"></i><h3>Massage Therapy</h3><p>Deep relaxation</p></div>
+            <div class="service-card"><i class="fas fa-leaf"></i><h3>Body Scrubs</h3><p>Silky smoothness</p></div>
+            <div class="service-card"><i class="fas fa-soap"></i><h3>Skin Care</h3><p>Glowing complexion</p></div>
+            <div class="service-card"><i class="fas fa-hand"></i><h3>Nail & Beauty</h3><p>Perfect finish</p></div>
+        </div>
+    </section>
+
+    <!-- about -->
+    <section id="about" class="section fade-section">
+        <div class="about-grid">
+            <div class="about-img"> </div>
+            <div class="about-text">
+                <h2 class="section-title" style="text-align: left;">Tranquility redefined</h2>
+                <p>Step into Skyarv Beauty, where every detail whispers calm. Our expert therapists blend ancient techniques with modern luxury to create a sanctuary for your senses.</p>
+                <p>Nestled in the heart of Hurlingham, we offer a bespoke experience — from personalized facials to deep tissue massages — all in an atmosphere of understated elegance.</p>
+                <p>Let the golden light and soft aromas guide you to pure serenity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- gallery -->
+    <section id="gallery" class="section fade-section">
+        <h2 class="section-title">Moments of peace</h2>
+        <div class="section-sub">Our haven through the lens</div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=2070&auto=format&fit=crop" alt="spa"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop" alt="massage"></div>
+            <div class="gallery-item"><img src="https://plus.unsplash.com/premium_photo-1661580165651-8db470b9d416?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c3BhJTIwaW1hZ2VzfGVufDB8fDB8fHww" alt="room"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=2070&auto=format&fit=crop" alt="facial"></div>
+        </div>
+    </section>
+
+    <!-- testimonials slider -->
+    <section id="testimonials" class="section fade-section">
+        <h2 class="section-title">Kind words</h2>
+        <div class="testimonial-container">
+            <div class="testimonial-slide active"><p>“The most serene place in Nairobi. The gold facial left my skin glowing for weeks.”</p><span class="client-name">— Amina K.</span></div>
+            <div class="testimonial-slide"><p>“Professional, calming, and absolutely luxurious. Their massage therapy is otherworldly.”</p><span class="client-name">— James M.</span></div>
+            <div class="testimonial-slide"><p>“Finally a spa that understands quiet elegance. The attention to detail is unmatched.”</p><span class="client-name">— Wambui N.</span></div>
+            <div class="slider-controls">
+              </div>
+            <div class="dots" id="testimonialDots">
+                <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- booking section -->
+    <section id="booking" class="section fade-section">
+        <h2 class="section-title">Begin your journey</h2>
+        <div class="section-sub">Reserve your moment of bliss</div>
+        <form class="booking-form" id="bookingForm">
+            <div class="form-row">
+                <input type="text" placeholder="Full name" required>
+                <input type="tel" placeholder="Phone number" value="+254 713 890926">
+            </div>
+            <div class="form-row">
+                <input type="email" placeholder="Email address">
+                <select required>
+                    <option>Select service</option>
+                    <option>Facial Treatments</option>
+                    <option>Massage Therapy</option>
+                    <option>Body Scrubs</option>
+                    <option>Skin Care</option>
+                    <option>Nail & Beauty Services</option>
+                </select>
+            </div>
+            <input type="date" style="margin-bottom:1.5rem;" required>
+            <textarea rows="4" placeholder="Message (optional)"></textarea>
+            <button type="submit" class="submit-btn">Confirm appointment</button>
+        </form>
+    </section>
+
+    <!-- contact + map -->
+    <section id="contact" class="section fade-section">
+        <h2 class="section-title">Visit our retreat</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="info-item"><i class="fas fa-phone-alt"></i> <a href="tel:+254713890926">+254 713 890926</a></div>
+                <div class="info-item"><i class="fas fa-envelope"></i> <a href="mailto:info@skyarvbeauty.co.ke">info@skyarvbeauty.co.ke</a></div>
+                <div class="info-item"><i class="fas fa-map-marker-alt"></i> Jabavu Lane, Hurlingham, Nairobi</div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://maps.google.com/maps?q=jabavu%20lane%20hurlingham%20nairobi&output=embed" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <div class="logo"><i class="fas fa-spa"></i> Skyarv <span>Beauty</span></div>
+                <p>Where luxury meets stillness.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick links</h4>
+                <a href="#home">Home</a><a href="#services">Services</a><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+            </div>
+            <div class="footer-contact">
+                <p><i class="fas fa-phone"></i> +254 713 890926</p>
+                <p><i class="fas fa-map-pin"></i> Jabavu Lane, Hurlingham</p>
+                <p><i class="fas fa-clock"></i> Mon-Sat 9am – 8pm</p>
+            </div>
+        </div>
+        <div class="copyright">
+            © <span id="currentYear"></span> Skyarv Beauty. All rights reserved. <br> Website Designed & Developed by <a href="https://sarahadevelopers.co.ke" target="_blank" style="color: var(--gold);">Saraha Developers</a>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // mobile menu toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('show');
+                });
+            }
+
+            // testimonial slider
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.dot');
+            const prev = document.getElementById('prevTestimonial');
+            const next = document.getElementById('nextTestimonial');
+            let current = 0;
+
+            function showSlide(index) {
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+                slides.forEach(s => s.classList.remove('active'));
+                dots.forEach(d => d.classList.remove('active'));
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                current = index;
+            }
+
+            if (prev && next) {
+                prev.addEventListener('click', () => showSlide(current - 1));
+                next.addEventListener('click', () => showSlide(current + 1));
+                dots.forEach((dot, i) => {
+                    dot.addEventListener('click', () => showSlide(i));
+                });
+            }
+
+            // dynamic year
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // booking form prevent default (demo)
+            document.getElementById('bookingForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you. We will contact you shortly to confirm your appointment.');
+            });
+
+            // smooth scroll for nav links (prevent default and use native smooth)
+            const links = document.querySelectorAll('.nav-links a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    // close mobile menu if open
+                    if (navLinks.classList.contains('show')) navLinks.classList.remove('show');
+                });
+            });
+
+            // intersection observer for fade sections
+            const faders = document.querySelectorAll('.fade-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px' });
+            faders.forEach(el => observer.observe(el));
+
+            // minor: set background image for about (if fails)
+        })();
+    </script>
+</body>
+</html>
