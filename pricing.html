@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyarv Beauty | Services & Rituals</title>
+    <!-- Jost font & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #fff9f2;
+            --beige: #f5efe8;
+            --soft-beige: #f0e8de;
+            --white: #ffffff;
+            --gold: #c6a47e;
+            --gold-light: #dac29c;
+            --dark-gold: #a88664;
+            --text-dark: #3e3a36;
+            --text-light: #6b625a;
+            --shadow: 0 20px 35px -8px rgba(0,0,0,0.07), 0 5px 15px rgba(0,0,0,0.03);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-padding-top: 90px;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.03);
+            z-index: 1000;
+            padding: 0.8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(198, 164, 126, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--dark-gold);
+        }
+        .logo img {
+            height: 50px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+        .logo span {
+            font-weight: 300;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 400;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--gold);
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .book-btn {
+            background: var(--gold);
+            color: white !important;
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 500;
+            box-shadow: 0 8px 18px rgba(198, 164, 126, 0.25);
+            transition: var(--transition);
+        }
+        .book-btn:hover {
+            background: var(--dark-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(198, 164, 126, 0.3);
+        }
+        .book-btn::after {
+            display: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: var(--gold);
+            cursor: pointer;
+        }
+
+        /* page header */
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop') center/cover;
+            height: 40vh;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .page-header h1 {
+            font-size: 4rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .page-header p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 1rem auto 0;
+        }
+
+        /* section styling */
+        .services-section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 350;
+            color: var(--dark-gold);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .section-sub {
+            text-align: center;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.2rem;
+        }
+
+        /* availability banner */
+        .availability-banner {
+            background: var(--white);
+            border-radius: 50px;
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--gold-light);
+        }
+        .banner-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+        }
+        .banner-item i {
+            color: var(--gold);
+            font-size: 1.6rem;
+        }
+
+        /* service cards */
+        .service-category {
+            margin-bottom: 5rem;
+        }
+        .category-title {
+            font-size: 2.2rem;
+            font-weight: 350;
+            color: var(--dark-gold);
+            border-left: 6px solid var(--gold);
+            padding-left: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .service-card-detailed {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(198,164,126,0.15);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .service-card-detailed:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -15px rgba(198,164,126,0.3);
+            border-color: var(--gold);
+        }
+        .service-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px dashed var(--gold-light);
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .service-title h3 {
+            font-size: 1.8rem;
+            font-weight: 450;
+            color: var(--text-dark);
+        }
+        .price {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--gold);
+        }
+        .duration {
+            background: var(--soft-beige);
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0 1rem;
+            color: var(--text-light);
+        }
+        .description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+        .benefits {
+            list-style: none;
+            margin-bottom: 1.8rem;
+        }
+        .benefits li {
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .benefits li i {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+        .book-service-btn {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        .book-service-btn:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+        /* waxing & nail tables (simple grid) */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .price-item {
+            background: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 40px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid rgba(198,164,126,0.1);
+        }
+
+        /* footer */
+        .footer {
+            background: var(--beige);
+            padding: 4rem 2rem 2rem;
+            margin-top: 3rem;
+            border-top: 2px solid rgba(198,164,126,0.2);
+        }
+        .footer-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1.5fr;
+            gap: 3rem;
+        }
+        .footer-logo .logo {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+        .social-icons a {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-right: 1rem;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            background: #20b859;
+            transform: scale(1.08);
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 2rem 0;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-header h1 {
+                font-size: 2.8rem;
+            }
+        }
+        @media (max-width: 500px) {
+            .service-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://wa.me/254713890926" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="skyarv-favicon.webp" alt="Skyarv Beauty"> Skyarv <span>Beauty</span>
+        </div>
+        <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#gallery">Gallery</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="index.html#booking" class="book-btn">Book Appointment</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <div>
+            <h1>Signature Treatments & Rituals</h1>
+            <p>Holistic wellness therapies designed to relax the body, restore the skin, and elevate your spa experience.</p>
+        </div>
+    </div>
+
+    <div class="services-section">
+        <!-- 24/7 outcall banner -->
+        <div class="availability-banner">
+            <div class="banner-item"><i class="fas fa-clock"></i> 24/7 service – in-spa or outcall</div>
+            <div class="banner-item"><i class="fas fa-percent"></i> 30% deposit required for outcalls</div>
+            <div class="banner-item"><i class="fas fa-car"></i> Travel charges may apply</div>
+            <div class="banner-item"><i class="fas fa-lock"></i> Discreet & professional</div>
+        </div>
+
+        <!-- Massage Therapy Packages (priced) -->
+        <div id="massage" class="service-category">
+            <h2 class="category-title">Massage Therapy Packages</h2>
+            <p class="section-sub" style="text-align: left; margin-bottom: 2rem;">Professional therapeutic massages available 24/7. Outcall services require a 30% deposit to confirm. Standard session 60 min (extensions available).</p>
+            <div class="service-grid">
+                <!-- Swedish -->
+                <div class="service-card-detailed">
+                    <div class="service-title"><h3>Swedish Massage</h3><span class="price">KES 4,000</span></div>
+                    <span class="duration">⏱️ 60 min</span>
+                    <p class="description">A classic full-body relaxation massage using long, flowing strokes and gentle kneading techniques. Improves circulation, relieves mild tension, ideal for first-time guests.</p>
+                    <ul class="benefits">
+                        <li><i class="fas fa-check-circle"></i> Improves circulation</li>
+                        <li><i class="fas fa-check-circle"></i> Reduces stress & fatigue</li>
+                        <li><i class="fas fa-check-circle"></i> Promotes deep relaxation</li>
+                    </ul>
+                    <a href="index.html#booking" class="book-service-btn">Book this treatment</a>
+                </div>
+                <!-- Deep Tissue -->
+                <div class="service-card-detailed">
+                    <div class="service-title"><h3>Deep Tissue Massage</h3><span class="price">KES 6,500</span></div>
+                    <span class="duration">⏱️ 60–75 min</span>
+                    <p class="description">Therapeutic massage targeting deeper muscle layers to release chronic tension, stiffness, and sports-related soreness.</p>
+                    <ul class="benefits">
+                        <li><i class="fas fa-check-circle"></i> Relieves muscle pain & knots</li>
+                        <li><i class="fas fa-check-circle"></i> Improves posture & mobility</li>
+                        <li><i class="fas fa-check-circle"></i> Ideal for active lifestyles</li>
+                    </ul>
+                    <a href="index.html#booking" class="book-service-btn">Book this treatment</a>
+                </div>
+                <!-- Aromatherapy -->
+                <div class="service-card-detailed">
+                    <div class="service-title"><h3>Aromatherapy Massage</h3><span class="price">KES 7,500</span></div>
+                    <span class="duration">⏱️ 60 min</span>
+                    <p class="description">Luxurious massage with premium essential oils for relaxation, stress relief, and emotional balance.</p>
+                    <ul class="benefits">
+                        <li><i class="fas fa-check-circle"></i> Promotes relaxation & balance</li>
+                        <li><i class="fas fa-check-circle"></i> Nourishes skin with oils</li>
+                        <li><i class="fas fa-check-circle"></i> Enhances mood & reduces anxiety</li>
+                    </ul>
+                    <a href="index.html#booking" class="book-service-btn">Book this treatment</a>
+                </div>
+                <!-- Premium Sensual Relaxation (new) -->
+                <div class="service-card-detailed">
+                    <div class="service-title"><h3>Premium Sensual Relaxation</h3><span class="price">KES 9,500</span></div>
+                    <span class="duration">⏱️ 60 min</span>
+                    <p class="description">Slow, soothing techniques designed to fully relax the body and mind. Calming touch, warm oils, tranquil atmosphere.</p>
+                    <ul class="benefits">
+                        <li><i class="fas fa-check-circle"></i> Deeply indulgent experience</li>
+                        <li><i class="fas fa-check-circle"></i> Emphasizes calming touch</li>
+                        <li><i class="fas fa-check-circle"></i> Perfect for total escape</li>
+                    </ul>
+                    <a href="index.html#booking" class="book-service-btn">Book this treatment</a>
+                </div>
+                <!-- Couples Massage (optional) -->
+                <div class="service-card-detailed">
+                    <div class="service-title"><h3>Couples Massage</h3><span class="price">KES 9,500</span></div>
+                    <span class="duration">⏱️ 60 min</span>
+                    <p class="description">Shared relaxation with synchronized massage for two in a tranquil setting. Two therapists.</p>
+                    <ul class="benefits">
+                        <li><i class="fas fa-check-circle"></i> Perfect for partners/friends</li>
+                        <li><i class="fas fa-check-circle"></i> Enhances connection</li>
+                        <li><i class="fas fa-check-circle"></i> Memorable occasion</li>
+                    </ul>
+                    <a href="index.html#booking" class="book-service-btn">Book this treatment</a>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; background: var(--soft-beige); padding: 1rem 2rem; border-radius: 60px;">
+                <p><i class="fas fa-info-circle" style="color: var(--gold);"></i> Outcall bookings require 30% deposit. Extended duration (90/120 min) available on request. Hotel & residence visits welcome.</p>
+            </div>
+        </div>
+
+        <!-- Facial Treatments -->
+        <div id="facial" class="service-category">
+            <h2 class="category-title">Facial Treatments</h2>
+            <div class="service-grid">
+                <div class="service-card-detailed"><div class="service-title"><h3>Classic Glow Facial</h3><span class="price">KES 3,500</span></div><p class="description">Deep cleansing facial that removes impurities and restores natural radiance.</p><a href="index.html#booking" class="book-service-btn">Book</a></div>
+                <div class="service-card-detailed"><div class="service-title"><h3>Hydrating Facial</h3><span class="price">KES 4,500</span></div><p class="description">Infuses moisture into dry/dehydrated skin, leaving it soft and refreshed.</p><a href="index.html#booking" class="book-service-btn">Book</a></div>
+                <div class="service-card-detailed"><div class="service-title"><h3>Anti-Aging Facial</h3><span class="price">KES 6,000</span></div><p class="description">Reduces fine lines, improves elasticity for a youthful glow.</p><a href="index.html#booking" class="book-service-btn">Book</a></div>
+                <div class="service-card-detailed"><div class="service-title"><h3>Acne Treatment Facial</h3><span class="price">KES 5,000</span></div><p class="description">Targets breakouts, helps control oil and improve skin clarity.</p><a href="index.html#booking" class="book-service-btn">Book</a></div>
+            </div>
+        </div>
+
+        <!-- Body Treatments -->
+        <div id="body" class="service-category">
+            <h2 class="category-title">Body Treatments</h2>
+            <div class="service-grid">
+                <div class="service-card-detailed"><div class="service-title"><h3>Coffee Body Scrub</h3><span class="price">KES 4,500</span></div><p class="description">Exfoliating scrub that removes dead skin and stimulates circulation.</p><a href="index.html#booking" class="book-service-btn">Book</a></div>
+                <div class="service-card-detailed"><div class="service-title"><h3>Sugar Body Polish</h3><span class="price">KES 4,000</span></div><p class="description">Gentle exfoliation for smooth, radiant skin.</p><a href="index.html#booking" class="book-service-btn">Book</a></div>
+                <div class="service-card-detailed"><div class="service-title"><h3>Detox Body Wrap</h3><span class="price">KES 6,000</span></div><p class="description">Removes toxins while hydrating and firming the skin.</p><a href="index.html#booking" class="book-service-btn">Book</a></div>
+            </div>
+        </div>
+
+        <!-- Waxing -->
+        <div id="waxing" class="service-category">
+            <h2 class="category-title">Waxing Services</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div>
+                    <h3 style="margin-bottom: 1rem;">Face Waxing</h3>
+                    <div class="price-grid">
+                        <div class="price-item"><span>Eyebrows</span> <span>KES 500</span></div>
+                        <div class="price-item"><span>Upper Lip</span> <span>KES 400</span></div>
+                        <div class="price-item"><span>Chin</span> <span>KES 400</span></div>
+                        <div class="price-item"><span>Full Face</span> <span>KES 1,500</span></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 1rem;">Body Waxing</h3>
+                    <div class="price-grid">
+                        <div class="price-item"><span>Underarms</span> <span>KES 800</span></div>
+                        <div class="price-item"><span>Half Arms</span> <span>KES 1,200</span></div>
+                        <div class="price-item"><span>Full Arms</span> <span>KES 1,800</span></div>
+                        <div class="price-item"><span>Half Legs</span> <span>KES 1,800</span></div>
+                        <div class="price-item"><span>Full Legs</span> <span>KES 2,800</span></div>
+                        <div class="price-item"><span>Bikini (standard)</span> <span>KES 2,000</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nail & Beauty -->
+        <div id="nails" class="service-category">
+            <h2 class="category-title">Nail & Beauty Services</h2>
+            <div class="service-grid">
+                <div class="service-card-detailed"><div class="service-title"><h3>Manicure</h3><span class="price">KES 1,500</span></div><p class="description">Shaping, cuticle care, and polish.</p><a href="index.html#booking" class="book-service-btn">Book</a></div>
+                <div class="service-card-detailed"><div class="service-title"><h3>Pedicure</h3><span class="price">KES 2,000</span></div><p class="description">Foot exfoliation, massage, and nail care.</p><a href="index.html#booking" class="book-service-btn">Book</a></div>
+                <div class="service-card-detailed"><div class="service-title"><h3>Gel Polish</h3><span class="price">KES 2,500</span></div><p class="description">Long-lasting glossy gel finish.</p><a href="index.html#booking" class="book-service-btn">Book</a></div>
+            </div>
+        </div>
+
+        <!-- Skin care treatments -->
+        <div id="skin" class="service-category">
+            <h2 class="category-title">Skin Care & Beauty Treatments</h2>
+            <div class="service-grid">
+                <div class="service-card-detailed"><div class="service-title"><h3>Body Polishing</h3><span class="price">KES 5,000</span></div><p class="description">Full-body exfoliation to restore glow.</p><a href="index.html#booking" class="book-service-btn">Book</a></div>
+                <div class="service-card-detailed"><div class="service-title"><h3>Back Facial</h3><span class="price">KES 4,500</span></div><p class="description">Deep cleansing for the back, smooths skin.</p><a href="index.html#booking" class="book-service-btn">Book</a></div>
+                <div class="service-card-detailed"><div class="service-title"><h3>Skin Brightening</h3><span class="price">KES 6,000</span></div><p class="description">Advanced treatment to even skin tone.</p><a href="index.html#booking" class="book-service-btn">Book</a></div>
+            </div>
+        </div>
+
+        <!-- Premium Packages -->
+        <div class="service-category">
+            <h2 class="category-title">Curated Spa Rituals</h2>
+            <div class="service-grid">
+                <div class="service-card-detailed"><div class="service-title"><h3>Relaxation Package</h3><span class="price">KES 8,500</span></div><p class="description">Swedish Massage + Mini Facial + Foot Massage</p><a href="index.html#booking" class="book-service-btn">Book Package</a></div>
+                <div class="service-card-detailed"><div class="service-title"><h3>Deluxe Spa Ritual</h3><span class="price">KES 12,000</span></div><p class="description">Aromatherapy Massage + Hydrating Facial + Body Scrub</p><a href="index.html#booking" class="book-service-btn">Book Package</a></div>
+                <div class="service-card-detailed"><div class="service-title"><h3>Ultimate Spa Day</h3><span class="price">KES 16,000</span></div><p class="description">Full Body Massage + Premium Facial + Body Scrub + Pedicure</p><a href="index.html#booking" class="book-service-btn">Book Package</a></div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="index.html#booking" class="btn btn-primary" style="background: var(--gold); border: none; padding: 1rem 3rem; font-size: 1.3rem;">Book your appointment</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <div class="logo"><img src="skyarv-favicon.webp" alt="Skyarv Beauty" style="height:50px;"> Skyarv <span>Beauty</span></div>
+                <p>Where luxury meets stillness.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick links</h4>
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#gallery">Gallery</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="footer-contact">
+                <p><i class="fas fa-phone"></i> +254 713 890926</p>
+                <p><i class="fas fa-map-pin"></i> WhiteHouse, Thome</p>
+                <p><i class="fas fa-clock"></i> 24/7 service</p>
+            </div>
+        </div>
+        <div class="copyright">
+            © <span id="currentYear"></span> Skyarv Beauty. All rights reserved. <br> Website Designed & Developed by <a href="https://sarahadevelopers.co.ke" target="_blank" style="color: var(--gold);">Saraha Developers</a>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('show');
+                });
+            }
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // smooth scroll for nav links to home page anchors
+            const links = document.querySelectorAll('.nav-links a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    if (navLinks.classList.contains('show')) navLinks.classList.remove('show');
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
